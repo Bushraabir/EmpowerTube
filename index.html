@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerTube - Educational Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <div class="logo">EmpowerTube</div>
+        </div>
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="add-content-btn" id="addContentBtn">
+                <i class="fas fa-plus"></i> Add Content
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <!-- New close button -->
+            <button class="menu-toggle" id="menuClose" style="margin-bottom: 1rem;">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="filter-section">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search content...">
+                <select id="categoryFilter" class="category-filter">
+                    <option value="">All Categories</option>
+                    <option value="programming">Programming</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                </select>
+                <select id="sortFilter" class="sort-filter">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="popular">Most Popular</option>
+                </select>
+                <label class="favorite-filter">
+                    <input type="checkbox" id="favoriteFilter">
+                    Show Favorites Only
+                </label>
+            </div>
+            <div class="categories">
+                <h3>Your Content</h3>
+                <div class="category-stats">
+                    <p>Total Items: <span id="totalCount">0</span></p>
+                    <p>Favorites: <span id="favoriteCount">0</span></p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content" id="contentContainer"></main>
+
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h2>Add New Content</h2>
+            <div class="form-tabs">
+                <button class="tab-btn active" data-tab="video">Video</button>
+                <button class="tab-btn" data-tab="pdf">PDF</button>
+                <button class="tab-btn" data-tab="article">Article</button>
+            </div>
+            
+            <div class="tab-content active" data-tab="video">
+                <input type="text" id="videoUrl" placeholder="YouTube URL or Playlist">
+                <input type="text" id="videoTitle" placeholder="Title">
+                <select id="videoCategory">
+                    <option value="">Select Category</option>
+                    <option value="programming">Programming</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                </select>
+            </div>
+
+            <div class="tab-content" data-tab="pdf">
+                <input type="file" id="pdfUpload" accept=".pdf">
+                <input type="text" id="pdfTitle" placeholder="Title">
+                <select id="pdfCategory">
+                    <option value="">Select Category</option>
+                    <option value="programming">Programming</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                </select>
+            </div>
+
+            <div class="tab-content" data-tab="article">
+                <textarea id="articleContent" placeholder="Write your article here..."></textarea>
+                <input type="text" id="articleTitle" placeholder="Title">
+                <select id="articleCategory">
+                    <option value="">Select Category</option>
+                    <option value="programming">Programming</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                </select>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-primary" id="submitContent">Add Content</button>
+                <button class="btn-secondary" id="cancelAdd">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <h2>Content Details</h2>
+            <div id="detailContent"></div>
+            <div class="modal-actions">
+                <button class="btn-primary" id="editContentBtn">Edit</button>
+                <button class="btn-secondary" id="closeDetailBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
